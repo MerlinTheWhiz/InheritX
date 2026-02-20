@@ -39,11 +39,10 @@ pub async fn login_admin(
     State(state): State<Arc<AppState>>,
     Json(payload): Json<LoginRequest>,
 ) -> Result<Json<LoginResponse>, ApiError> {
-    let admin = sqlx::query_as!(
-        Admin,
+    let admin = sqlx::query_as::<_, Admin>(
         "SELECT id, email, password_hash, role, status FROM admins WHERE email = $1",
-        payload.email
     )
+    .bind(&payload.email)
     .fetch_optional(&state.db)
     .await?;
 
