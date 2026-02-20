@@ -29,7 +29,7 @@ pub struct Claims {
 #[derive(Debug, FromRow)]
 struct Admin {
     id: uuid::Uuid,
-    email: String,
+    _email: String,
     password_hash: String,
     role: String,
     status: String,
