@@ -66,7 +66,7 @@ async fn post_plans_claim_without_auth_returns_401() {
     );
 }
 
-// ── GET /api/plans/:id ── 
+// ── GET /api/plans/:id ──
 
 /// Without an Authorization header, fetching a plan must be rejected with 401.
 #[tokio::test]
